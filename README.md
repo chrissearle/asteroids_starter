@@ -1,5 +1,4 @@
-slidenumbers: true
-theme: Scherzkeks, 2
+theme: fira, 3
 list: alignment(left)
 
 # Asteroids
@@ -28,6 +27,10 @@ Then under preference:
 
 ---
 
+![inline](Presentation/Editor_Settings.png)
+
+---
+
 ## Project
 
 Create a new project - choose compatibility renderer
@@ -45,12 +48,22 @@ Create a new project - choose compatibility renderer
 
 ---
 
+![inline](Presentation/Project_Settings_Display_Window.png)
+
+---
+
 ## Project settings
 
 ### Rendering
 
 - Default Texture Filter - Nearest
 - Default Clear Color - Black
+
+---
+
+![inline](Presentation/Project_Settings_Rendering_Textures.png)
+
+![inline](Presentation/Project_Settings_Rendering_Environment.png)
 
 ---
 
@@ -64,11 +77,30 @@ Create a new project - choose compatibility renderer
 
 ---
 
+![inline](Presentation/Project_Settings_Layer_Names_2D_Physics.png)
+
+---
+
 ## Provided files
 
 - Sounds were generated using [chiptone](https://sfbgames.itch.io/chiptone)
 - [Font from fontspace](https://www.fontspace.com/laser-corps-font-f46094)
 - [Artwork from kenney.nl](https://kenney.nl/assets/simple-space)
+
+---
+
+The tilesheet is a set of 64x64 pixel images.
+
+We will select the ones we want by using `Region`
+
+- X/Y - top left corner - measured from top left of image
+- W/H - size
+
+E.g. Player - x: 64 y:128 w:64 h:64
+
+![inline](Presentation/Player.png)
+
+![right fit](Assets/simpleSpace_tilesheet.png)
 
 ---
 
