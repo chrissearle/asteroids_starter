@@ -98,9 +98,7 @@ We will select the ones we want by using `Region`
 
 E.g. Player - x: 64 y:128 w:64 h:64
 
-![inline](Presentation/Player.png)
-
-![right fit](Assets/simpleSpace_tilesheet.png)
+![right fit](Presentation/Player_Region.png)
 
 ---
 
