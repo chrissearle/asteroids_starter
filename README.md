@@ -114,6 +114,8 @@ It will need a sprite child node.
 
 It will also need a collision child node.
 
+![inline fit](Presentation/Player_Scene_Nodes.png)
+
 ---
 
 ## Player Sprite
@@ -125,11 +127,17 @@ It will also need a collision child node.
 
 ---
 
+![inline fit](Presentation/Player_Scene_Sprite.png)
+
+---
+
 But - the center (will be used for rotation) is too far forward.
 
 We want it about the widest point of the body.
 
 - Set the sprite transform to y: -10
+
+![inline fit](Presentation/Player_Scene_Rotation_Center.png)
 
 ---
 
@@ -138,6 +146,8 @@ We want it about the widest point of the body.
 - Add CollisionPolygon2D child node
 - Draw round main body of ship
 - On the player node - set collision layer for player to layer 1, no mask
+
+![inline fit](Presentation/Player_Scene_Collision.png)
 
 ---
 
@@ -288,6 +298,8 @@ Size it just inside the bullet
 
 On the bullet node - set it on collision layer 3 (bullet) and mask layer 2 (asteroid)
 
+![inline fit](Presentation/Bullet_Scene_Collision.png)
+
 ---
 
 ## Bullet Movement
@@ -354,9 +366,9 @@ Then in process - we want to detect the shot - when this happens
 - place it at the tip of the ship
 - rotate it to match the ship
 - add it to the world scene
-- we'll also use the world scene to play the sound
+- we'll also use the world scene to play the sound[^1]
 
-we use the world scene for display and sound so that they continue even if the player dies
+[^1]: we use the world scene for display and sound so that they continue even if the player dies
 
 ---
 
@@ -649,4 +661,3 @@ func _process(delta: float) -> void:
 - Different asteroids
 - Asteroid breakup to smaller rocks
 - ...
-````
