@@ -207,9 +207,7 @@ Let's put it middle of screen.
 
 This means we'll need a world.
 
----
-
-- Create world scene (Node2d)
+- Create world scene (Node2D)
 - Add player node as child
 - Add script to world
 
@@ -230,6 +228,18 @@ func _ready() -> void:
 
 ---
 
+## [fit] Exercise 3
+
+Open exercise 3.
+
+- Create the world scene (new Node2D scene)
+- Add the player to it (drag the player scene to the node tree)
+- Add script
+- Copy in the starter script code from exercise3/exercise_starter.gd
+- Complete the script
+
+---
+
 ## Player Movement
 
 OK - let's get it to move too
@@ -238,8 +248,14 @@ Extend the player script
 
 ---
 
+## A little trigonometry
+
+![inline](Presentation/trig.png)
+
+---
+
 ```
-@export var speed_max = 200
+@export var speed_max: = 200
 
 func _process(delta: float) -> void:
     ...
@@ -252,6 +268,16 @@ func _process(delta: float) -> void:
 
 		position += Vector2(x, y) * delta
 ```
+
+---
+
+## [fit] Exercise 4
+
+Open exercise 4.
+
+- Complete the player script
+- Run the game
+- Fly around :)
 
 ---
 
@@ -294,6 +320,16 @@ func screen_wrap() -> void:
 	position.y = wrapf(position.y, 0, screen_size.y)
 
 ```
+
+---
+
+## [fit] Exercise 5
+
+Open exercise 5.
+
+Very simple exercise - test out the screen_wrap function.
+
+Do you understand what it is doing?
 
 ---
 
