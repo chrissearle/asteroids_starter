@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://co1524gy1kj2v"]
+
+[ext_resource type="Texture2D" uid="uid://d0cc1eyfbracw" path="res://Assets/simpleSpace_tilesheet.png" id="1_lr3uv"]
+[ext_resource type="Script" path="res://Bullet/Bullet.gd" id="1_osacl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ovrxq"]
+radius = 4.0
+
+[node name="Bullet" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_osacl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_lr3uv")
+region_enabled = true
+region_rect = Rect2(448, 192, 64, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ovrxq")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

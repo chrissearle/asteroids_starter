@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlhxsvg2rp3gm"]
+
+[ext_resource type="Script" path="res://TimeDisplay.gd" id="1_ry3uk"]
+[ext_resource type="FontFile" uid="uid://bjqu0fkqtf5yh" path="res://Assets/NeueMachina-Black.otf" id="2_6x5ol"]
+
+[node name="TimeDisplay" type="Node2D"]
+position = Vector2(10, 6)
+script = ExtResource("1_ry3uk")
+
+[node name="Minutes" type="Label" parent="."]
+offset_left = 1088.0
+offset_top = 32.0
+offset_right = 1128.0
+offset_bottom = 60.0
+theme_override_fonts/font = ExtResource("2_6x5ol")
+theme_override_font_sizes/font_size = 24
+text = "00"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Seconds" type="Label" parent="."]
+offset_left = 1152.0
+offset_top = 32.0
+offset_right = 1192.0
+offset_bottom = 60.0
+theme_override_fonts/font = ExtResource("2_6x5ol")
+theme_override_font_sizes/font_size = 24
+text = "00"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Milliseconds" type="Label" parent="."]
+offset_left = 1216.0
+offset_top = 32.0
+offset_right = 1256.0
+offset_bottom = 60.0
+theme_override_fonts/font = ExtResource("2_6x5ol")
+theme_override_font_sizes/font_size = 24
+text = "00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 1184.0
+offset_top = 32.0
+offset_right = 1224.0
+offset_bottom = 60.0
+theme_override_fonts/font = ExtResource("2_6x5ol")
+theme_override_font_sizes/font_size = 24
+text = ":"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label5" type="Label" parent="."]
+offset_left = 1120.0
+offset_top = 32.0
+offset_right = 1160.0
+offset_bottom = 60.0
+theme_override_fonts/font = ExtResource("2_6x5ol")
+theme_override_font_sizes/font_size = 24
+text = ":"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true

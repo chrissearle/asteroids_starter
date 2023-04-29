@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7wi6nuge1rv1"]
+
+[ext_resource type="Script" path="res://Asteroid/Asteroid.gd" id="1_eeoy0"]
+[ext_resource type="Texture2D" uid="uid://dnejcqvul21fb" path="res://Assets/monogram-jade.png" id="2_1mfnl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0crus"]
+size = Vector2(26, 26)
+
+[node name="Asteroid" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_eeoy0")
+large = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.055, 0.055)
+texture = ExtResource("2_1mfnl")
+region_rect = Rect2(64, 256, 64, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0crus")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

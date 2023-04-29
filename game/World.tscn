@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://qm4rcjuxmhqk"]
+
+[ext_resource type="Script" path="res://World.gd" id="1_bxt38"]
+[ext_resource type="PackedScene" uid="uid://bffpo2c8jgu7m" path="res://Player/Player.tscn" id="2_cf0ag"]
+[ext_resource type="AudioStream" uid="uid://db80wkd5asrvo" path="res://Sounds/shoot.wav" id="3_uwm27"]
+[ext_resource type="AudioStream" uid="uid://b0l4517gis1ev" path="res://Sounds/die.wav" id="4_bs3wv"]
+[ext_resource type="AudioStream" uid="uid://c2yltjcj872ni" path="res://Sounds/boom.wav" id="5_1tvfy"]
+[ext_resource type="PackedScene" uid="uid://dlhxsvg2rp3gm" path="res://TimeDisplay.tscn" id="6_oyy7q"]
+[ext_resource type="FontFile" uid="uid://bjqu0fkqtf5yh" path="res://Assets/NeueMachina-Black.otf" id="7_7aavy"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_bxt38")
+
+[node name="Player" parent="." instance=ExtResource("2_cf0ag")]
+
+[node name="BulletSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_uwm27")
+
+[node name="KillSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_bs3wv")
+
+[node name="HitSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_1tvfy")
+
+[node name="TimeDisplay" parent="." instance=ExtResource("6_oyy7q")]
+
+[node name="RestartLabel" type="Label" parent="."]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 314.0
+offset_right = 1280.0
+offset_bottom = 378.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_7aavy")
+theme_override_font_sizes/font_size = 60
+text = "Press Space to Restart"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FinalTime" type="Label" parent="."]
+offset_top = 400.0
+offset_right = 1280.0
+offset_bottom = 464.0
+theme_override_fonts/font = ExtResource("7_7aavy")
+theme_override_font_sizes/font_size = 60
+text = "Time: 00:00:00"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dts4pso3veiqm"]
+
+[ext_resource type="Script" path="res://Asteroid/Asteroid.gd" id="1_dsoed"]
+[ext_resource type="Texture2D" uid="uid://clig6m5k6t2di" path="res://Assets/monogram-gold.png" id="2_5oc18"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i5lbt"]
+size = Vector2(40, 40)
+
+[node name="Asteroid" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_dsoed")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("2_5oc18")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_i5lbt")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
