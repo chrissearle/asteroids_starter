@@ -363,9 +363,39 @@ On the bullet node - set it on collision layer 3 (bullet) and mask layer 2 (aste
 
 ---
 
+## [fit] Exercise 6
+
+Open exercise 6.
+
+Create the bullet scene
+
+[.column]
+
+- Add Area2D Scene - called bullet - save it
+- Add Sprite2D and CollisionShape2D nodes
+- Load sprite with the same texture
+
+[.column]
+
+- Region: x:448 y:192 w:64 h:64
+- Create circle collision shape
+- Set collision layer 4 and mask layer 2
+
+---
+
 ## Bullet Movement
 
-To make the bullet move - add a script so that we can both set the initial direction and also move it.
+To make the bullet move - add a script so that we can:
+
+- set the initial rotation
+- set the initial direction
+
+Then in process we can make it move and spin:
+
+- count the moved steps
+- if moved too far - remove it
+- update the position following the set direction
+- rotate it a bit
 
 ---
 
@@ -375,8 +405,8 @@ var moved: = 0
 @export var max_move: = 240
 @export var speed_max: = 210
 
-func set_direction(rads: float) -> void:
-	rotation = rads
+func set_direction(radians: float) -> void:
+	rotation = radians
 	direction = Vector2.UP.rotated(rotation)
 
 func _process(delta: float) -> void:
@@ -395,6 +425,14 @@ func _process(delta: float) -> void:
 
 ---
 
+## [fit] Exercise 7
+
+Open exercise 7.
+
+Complete the bullet script.
+
+---
+
 ## Shoot!
 
 We actually need to be able to shoot it from the player.
@@ -405,11 +443,15 @@ Then - each time the trigger is pulled - we'll create a new bullet instance and 
 
 ---
 
+## Add the muzzle tip
+
 - Add child Node2D
 - Move it with transform - about y: -32 to place at front of ship
 - We also want to refer to it in the script - so rename it to Tip
 
 ---
+
+## Load the bullet
 
 Now - we will need to load the bullet for every shot.
 
@@ -420,6 +462,8 @@ const bullet = preload("res://Bullet/Bullet.tscn")
 ```
 
 ---
+
+## Detect input and shoot
 
 Then in process - we want to detect the shot - when this happens
 
@@ -469,11 +513,20 @@ I won't but it is possible.
 
 ---
 
+## [fit] Exercise 8
+
+Open exercise 8.
+
+- Complete the player script to shoot bullets.
+- Complete the world script to play the sound of a shot.
+
+---
+
 ## Targets!
 
 We've nothing to shoot at
 
-Let's add some asteroids
+Let's add an asteroid
 
 ---
 
@@ -483,83 +536,9 @@ Let's add some asteroids
 - Add a Sprite2D
 - Add a CollisionShape2D
 
-- Sprite region: 0 256 64 64
+- Sprite region: x:0 y:256 w:64 h:64
 - Collision - circle
 - Layers - place on 2 (asteroid) and mask on 1 (player)
-
----
-
-## Asteroid Movement
-
-Add a script to the asteroid scene.
-
-When ready - we want the asteroid to spin randomly and to move in a random direction.
-
----
-
-```
-@export var rotation_max: = 3.0
-@export var speed_max: = 100
-
-var direction: = Vector2.ZERO
-var rotation_speed: = 0
-
-func _ready() -> void:
-	randomize()
-
-	rotation = randf() * TAU
-
-	direction = Vector2(build_random_direction(), build_random_direction())
-
-	rotation_speed = (2 * rotation_max * randf()) - rotation_max
-
-func _process(delta: float) -> void:
-	position += direction * delta
-	rotation += rotation_speed * delta
-
-func build_random_direction() -> float:
-	return (1.0 - randf() * 2) * speed_max * (1.0 + randf())
-```
-
----
-
-## Adding asteroids
-
-We need to add asteroids to the world.
-
-We will also need to keep track of how many there are
-
-Expand on the world script
-
----
-
-```
-const asteroid = preload("res://Asteroid/Asteroid.tscn")
-
-@export var start_count = 7
-
-var asteroid_count: = 0
-
-func _ready() -> void:
-    ...
-
-	for _i in range(start_count):
-		build_asteroid()
-
-func build_asteroid() -> void:
-	var asteroid_instance = asteroid.instantiate()
-	asteroid_count += 1
-
-	add_child(asteroid_instance)
-
-	asteroid_instance.global_position = Vector2(screen_size.x * randf(), screen_size.y * randf())
-```
-
----
-
-## Add wrap around here too
-
-We'll use the same code as we did for player
 
 ---
 
@@ -608,17 +587,31 @@ Expand the world script
 ```
 @onready var killSound: = $KillSoundPlayer
 
-var alive: = true
+const asteroid = preload("res://Asteroid/Asteroid.tscn")
+
+func ready() -> void:
+    ...
+	var asteroid_instance: = asteroid.instantiate()
+
+	add_child(asteroid_instance)
+	asteroid_instance.position = screen_size / 4
+	asteroid_instance.kill.connect(kill_player)
+
 
 func kill_player():
 	killSound.play()
 	player.queue_free()
-    alive = false
 
-func build_asteroid() -> void:
-    ...
-	asteroid_instance.kill.connect(kill_player)
 ```
+
+---
+
+## [fit] Exercise 9
+
+Open exercise 9.
+
+- Complete the asteroid script to emit the kill event.
+- Complete the world script to play the sound of the player being hit and to remove the player.
 
 ---
 
@@ -675,46 +668,35 @@ Expand the world script
 @onready var hitSound: = $HitSoundPlayer
 
 func hit(area):
-    asteroid_count -= 1
 	hitSound.play()
 	area.queue_free()
 ```
 
 ---
 
-## End Game
+## [fit] Exercise 10
 
-We have one end game already - the player dies.
+Open exercise 10.
 
-We need to support the other option - the player wins.
-
-For now - we'll just remove the player.
-
-````
-func hit(area):
-    ...
-
-	if asteroid_count <= 0:
-		player.queue_free()
-```
+- Complete the bullet script to emit the hit event.
+- Connect the hit event to bullet_instance in the player script and call the hit method in the world script.
+- Complete the world script to play the sound of the asteroid being hit and to remove the asteroid.
 
 ---
 
-## Restart
+# [fit] Other stuff to add
 
-After end of game - we need to be able to restart.
+## See the longer presentation in the same repository for details
 
-Simplest is just to reload the app
-
-```
-func _process(delta: float) -> void:
-	if (asteroid_count <= 0 or not alive) and Input.is_action_pressed("ui_accept"):
-		get_tree().reload_current_scene()
-```
+- Asteroid movement
+- Asteroids should also wraparound
+- Multiple asteroids
+- End game
+- Restart
 
 ---
 
-## Possible improvements?
+# [fit] Other possible improvements to look at
 
 - Scoring
 - Start/Died/Won screens
@@ -722,4 +704,3 @@ func _process(delta: float) -> void:
 - Different asteroids
 - Asteroid breakup to smaller rocks
 - ...
-````

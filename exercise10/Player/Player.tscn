@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpt2jxsdh7fgs"]
+
+[ext_resource type="Script" path="res://Player/Player.gd" id="1_2jutw"]
+[ext_resource type="Texture2D" uid="uid://bsmvfijmxk6y3" path="res://Assets/simpleSpace_tilesheet.png" id="1_qfvf6"]
+
+[node name="Player" type="Area2D"]
+collision_mask = 0
+script = ExtResource("1_2jutw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -10)
+texture = ExtResource("1_qfvf6")
+region_enabled = true
+region_rect = Rect2(64, 128, 64, 64)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -33, 8, -1, 0, 14, -8, -1)
+
+[node name="Tip" type="Node2D" parent="."]
+position = Vector2(2.08165e-12, -32)
