@@ -379,7 +379,7 @@ Create the bullet scene
 
 - Region: x:448 y:192 w:64 h:64
 - Create circle collision shape
-- Set collision layer 4 and mask layer 2
+- Set collision layer 3 and mask layer 2
 
 ---
 
@@ -448,6 +448,10 @@ Then - each time the trigger is pulled - we'll create a new bullet instance and 
 - Add child Node2D
 - Move it with transform - about y: -32 to place at front of ship
 - We also want to refer to it in the script - so rename it to Tip
+
+```
+@onready var tip: = $Tip
+```
 
 ---
 
