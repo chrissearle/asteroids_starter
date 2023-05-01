@@ -24,10 +24,9 @@ func _process(delta: float) -> void:
 		exhaust.emitting = true
 		if engineSound.playing == false:
 			engineSound.play()
-		var y = -speed_max * cos(rotation)
-		var x = speed_max * sin(rotation)
-		
-		position += Vector2(x, y) * delta
+			
+		var direction = Vector2.ZERO.from_angle(rotation - (PI/2))
+		position += direction.normalized() * speed_max * delta
 	else:
 		engineSound.stop()
 		exhaust.emitting = false
