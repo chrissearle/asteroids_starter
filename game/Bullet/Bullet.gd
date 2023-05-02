@@ -28,4 +28,4 @@ func _process(delta: float) -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if area is Asteroid:
 		queue_free()
-		emit_signal("hit", area as Asteroid)
+		hit.emit(area as Asteroid)

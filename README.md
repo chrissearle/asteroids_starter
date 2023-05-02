@@ -1,9 +1,8 @@
-theme: fira, 3
-list: alignment(left)
+theme: titillium, 1
 
-# Asteroids
+# [fit] Asteroids
 
-## Godot 4 - 2D project
+## [fit] Godot 4 - 2D project
 
 ---
 
@@ -529,7 +528,7 @@ Expand the asteroid script
 signal kill
 
 func _on_area_entered(area: Area2D) -> void:
-	emit_signal("kill")
+	kill.emit()
 ```
 
 ---
@@ -577,7 +576,7 @@ Expand the bullet script
 signal hit
 
 func _on_area_entered(area: Area2D) -> void:
-	emit_signal("hit", area)
+	hit.emit(area)
 ```
 
 ---
@@ -661,3 +660,4 @@ func _process(delta: float) -> void:
 - Different asteroids
 - Asteroid breakup to smaller rocks
 - ...
+````

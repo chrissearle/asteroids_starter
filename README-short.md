@@ -573,7 +573,7 @@ Expand the asteroid script
 signal kill
 
 func _on_area_entered(area: Area2D) -> void:
-	emit_signal("kill")
+	kill.emit()
 ```
 
 ---
@@ -635,7 +635,7 @@ Expand the bullet script
 signal hit
 
 func _on_area_entered(area: Area2D) -> void:
-	emit_signal("hit", area)
+	hit.emit(area)
 ```
 
 ---

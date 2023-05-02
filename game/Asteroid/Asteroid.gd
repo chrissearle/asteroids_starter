@@ -37,4 +37,4 @@ func screen_wrap() -> void:
 	position.y = wrapf(position.y, 0, screen_size.y)
 
 func _on_area_entered(area: Area2D) -> void:
-	emit_signal("kill")
+	kill.emit()
