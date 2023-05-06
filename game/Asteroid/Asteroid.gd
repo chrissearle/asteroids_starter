@@ -7,8 +7,6 @@ extends Area2D
 
 @export var large = true
 
-@onready var screen_size: Vector2i = get_viewport().size
-
 var direction: = Vector2.ZERO
 var rotation_speed: = 0
 
@@ -26,15 +24,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	position += direction * delta
 	rotation += rotation_speed * delta
-	
-	screen_wrap()
-	
+
 func build_random_direction() -> float:
 	return (1.0 - randf() * 2) * speed_max * (1.0 + randf())
-
-func screen_wrap() -> void:
-	position.x = wrapf(position.x, 0, screen_size.x)
-	position.y = wrapf(position.y, 0, screen_size.y)
 
 func _on_area_entered(area: Area2D) -> void:
 	kill.emit()

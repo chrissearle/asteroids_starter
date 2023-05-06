@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cgdxnp6vnb7eu"]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://Asteroid/Asteroid.gd" id="1_dsoed"]
 [ext_resource type="Texture2D" uid="uid://dkvew34b5f5bm" path="res://Assets/monogram-lobster.png" id="2_o8hgr"]
+[ext_resource type="PackedScene" path="res://ScreenWrap.tscn" id="3_ylh7i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i5lbt"]
 size = Vector2(40, 40)
@@ -16,5 +17,8 @@ texture = ExtResource("2_o8hgr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_i5lbt")
+
+[node name="ScreenWrap" parent="." node_paths=PackedStringArray("area") instance=ExtResource("3_ylh7i")]
+area = NodePath("..")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

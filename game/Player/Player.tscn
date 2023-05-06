@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bffpo2c8jgu7m"]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Texture2D" uid="uid://d0cc1eyfbracw" path="res://Assets/simpleSpace_tilesheet.png" id="1_1cbku"]
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_rel34"]
 [ext_resource type="AudioStream" uid="uid://dkrqogpat7ia2" path="res://Sounds/engine.wav" id="3_htrw0"]
+[ext_resource type="PackedScene" path="res://ScreenWrap.tscn" id="4_7xc6p"]
 
 [node name="Player" type="Area2D"]
 collision_mask = 0
@@ -35,5 +36,8 @@ initial_velocity_max = 30.0
 
 [node name="EngineSoundPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_htrw0")
+
+[node name="ScreenWrap" parent="." node_paths=PackedStringArray("area") instance=ExtResource("4_7xc6p")]
+area = NodePath("..")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

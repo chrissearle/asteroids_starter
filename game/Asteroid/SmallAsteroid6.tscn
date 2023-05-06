@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfuk8wahgd13e"]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://Asteroid/Asteroid.gd" id="1_eeoy0"]
 [ext_resource type="Texture2D" uid="uid://clig6m5k6t2di" path="res://Assets/monogram-gold.png" id="2_y2hf4"]
+[ext_resource type="PackedScene" path="res://ScreenWrap.tscn" id="3_vm2ts"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0crus"]
 size = Vector2(26, 26)
@@ -18,5 +19,8 @@ region_rect = Rect2(64, 256, 64, 64)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0crus")
+
+[node name="ScreenWrap" parent="." node_paths=PackedStringArray("area") instance=ExtResource("3_vm2ts")]
+area = NodePath("..")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

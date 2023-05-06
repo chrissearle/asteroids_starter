@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b0d2bfovj2t64"]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://Asteroid/Asteroid.gd" id="1_7lof2"]
 [ext_resource type="Texture2D" uid="uid://d0cc1eyfbracw" path="res://Assets/simpleSpace_tilesheet.png" id="2_jg250"]
+[ext_resource type="PackedScene" path="res://ScreenWrap.tscn" id="3_uvb6s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xvv6y"]
 radius = 21.0
@@ -17,5 +18,8 @@ region_rect = Rect2(128, 256, 64, 64)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_xvv6y")
+
+[node name="ScreenWrap" parent="." node_paths=PackedStringArray("area") instance=ExtResource("3_uvb6s")]
+area = NodePath("..")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
