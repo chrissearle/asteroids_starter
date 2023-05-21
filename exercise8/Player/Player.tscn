@@ -16,5 +16,5 @@ region_rect = Rect2(64, 128, 64, 64)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(0, -33, 8, -1, 0, 14, -8, -1)
 
-[node name="Tip" type="Node2D" parent="."]
+[node name="Tip" type="Marker2D" parent="."]
 position = Vector2(2.08165e-12, -32)

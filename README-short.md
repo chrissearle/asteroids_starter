@@ -445,7 +445,7 @@ Then - each time the trigger is pulled - we'll create a new bullet instance and 
 
 ## Add the muzzle tip
 
-- Add child Node2D
+- Add child Marker2D
 - Move it with transform - about y: -32 to place at front of ship
 - We also want to refer to it in the script - so rename it to Tip
 

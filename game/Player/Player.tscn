@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://d0cbutytp0vmt"]
 
 [ext_resource type="Texture2D" uid="uid://d0cc1eyfbracw" path="res://Assets/simpleSpace_tilesheet.png" id="1_1cbku"]
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_rel34"]
@@ -19,7 +19,7 @@ region_rect = Rect2(64, 128, 64, 64)
 position = Vector2(0, -9)
 polygon = PackedVector2Array(0, 24, -8, 8, 0, -24, 8, 8)
 
-[node name="Tip" type="Node2D" parent="."]
+[node name="Tip" type="Marker2D" parent="."]
 position = Vector2(0, -32)
 
 [node name="Exhaust" type="CPUParticles2D" parent="."]
