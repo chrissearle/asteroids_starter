@@ -623,7 +623,7 @@ Open exercise 9.
 
 The bullet needs to react if it hits an asteroid.
 
-Select the bulet node then in the node menu - connect the "area entered" event.
+Select the bullet node then in the node menu - connect the "area entered" event.
 
 This time we'll also have to send which asteroid (area) was hit when we signal.
 
