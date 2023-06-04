@@ -38,8 +38,6 @@ const smallAsteroids = [
 var asteroid_count: = 0
 var break_count: = 3
 
-var time_elapsed := 0.0
-
 var alive: = true
 
 func _ready() -> void:
@@ -51,33 +49,23 @@ func _ready() -> void:
 	for _i in range(start_count):
 		build_asteroid(true)
 	
-	time_elapsed = 0.0
+	ScoreTime.reset()
 
 func _process(delta: float) -> void:
-	var minutes = time_elapsed / 60
-	var seconds = fmod(time_elapsed, 60)
-	var milliseconds = fmod(time_elapsed, 1) * 100
-	
 	if (asteroid_count <= 0 or not alive):
 		restart_label.visible = true
 		final_time_label.visible = true
-		final_time_label.text = "Time %02d:%02d:%02d" % [minutes, seconds, milliseconds]
+		final_time_label.text = "Time %02d:%02d:%02d" % [ScoreTime.minutes(), ScoreTime.seconds(), ScoreTime.milliseconds()]
 
 		if Input.is_action_pressed("ui_accept"):
 			get_tree().reload_current_scene()
 	else:
-		time_elapsed += delta
-	
-		time_display.set_time(minutes, seconds, milliseconds)
-
+		ScoreTime.add(delta)
 
 func kill_player():
 	AudioManager.play("res://Sounds/die.wav")
 	player.queue_free()
 	alive = false
-
-func bullet_fired() -> void:
-	time_elapsed += 5
 
 func hit(area: Asteroid):
 	var large = area.large

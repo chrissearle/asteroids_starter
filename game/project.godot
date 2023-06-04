@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 AudioManager="*res://Globals/AudioManager.gd"
+ScoreTime="*res://Globals/ScoreTime.gd"
 
 [display]
 

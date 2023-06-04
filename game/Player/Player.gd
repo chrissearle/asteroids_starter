@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 		bullet_instance.set_direction(rotation)
 		get_parent().add_child(bullet_instance)
 		AudioManager.play("res://Sounds/shoot.wav")
-		get_parent().bullet_fired()
+		ScoreTime.add(5)
 		bullet_instance.hit.connect(bullet_hit)
 
 func bullet_hit(area: Asteroid) -> void:
