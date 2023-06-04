@@ -31,9 +31,6 @@ const smallAsteroids = [
 @onready var screen_size: Vector2i = get_viewport().size
 
 @onready var player: = $Player
-@onready var bulletSound: = $BulletSoundPlayer
-@onready var killSound: = $KillSoundPlayer
-@onready var hitSound: = $HitSoundPlayer
 @onready var time_display: = $TimeDisplay
 @onready var restart_label: = $RestartLabel
 @onready var final_time_label: = $FinalTime
@@ -75,20 +72,18 @@ func _process(delta: float) -> void:
 
 
 func kill_player():
-	killSound.play()
+	AudioManager.play("res://Sounds/die.wav")
 	player.queue_free()
 	alive = false
 
 func bullet_fired() -> void:
 	time_elapsed += 5
-	bulletSound.play()
 
 func hit(area: Asteroid):
 	var large = area.large
 	var pos = area.global_position
 	
 	asteroid_count -= 1
-	hitSound.play()
 	area.queue_free()
 
 	if large:
