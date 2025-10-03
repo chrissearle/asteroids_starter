@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AsteroidResource" load_steps=4 format=3 uid="uid://4e3a1rjkc7ef"]
+
+[ext_resource type="Script" uid="uid://bev1fgrqp3g50" path="res://Asteroid/AsteroidResource.gd" id="1_v4b87"]
+[ext_resource type="Texture2D" uid="uid://d0cc1eyfbracw" path="res://Assets/simpleSpace_tilesheet.png" id="2_urr1u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v4b87"]
+radius = 14.4
+
+[resource]
+script = ExtResource("1_v4b87")
+pos = Vector2i(3, 4)
+region = true
+tex = ExtResource("2_urr1u")
+collision_shape = SubResource("CircleShape2D_v4b87")
+metadata/_custom_type_script = "uid://bev1fgrqp3g50"

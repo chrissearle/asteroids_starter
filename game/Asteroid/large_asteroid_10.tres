@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AsteroidResource" load_steps=4 format=3 uid="uid://cs21vil07xcbk"]
+
+[ext_resource type="Script" uid="uid://bev1fgrqp3g50" path="res://Asteroid/AsteroidResource.gd" id="1_wyxa2"]
+[ext_resource type="Texture2D" uid="uid://dkvew34b5f5bm" path="res://Assets/monogram-lobster.png" id="2_wyxa2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wyxa2"]
+size = Vector2(40, 40)
+
+[resource]
+script = ExtResource("1_wyxa2")
+large = true
+tex = ExtResource("2_wyxa2")
+scale = 0.08
+collision_shape = SubResource("RectangleShape2D_wyxa2")
+metadata/_custom_type_script = "uid://bev1fgrqp3g50"

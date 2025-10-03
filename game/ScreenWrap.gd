@@ -4,7 +4,7 @@ extends Node2D
 
 @export var area: Area2D
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	screen_wrap()
 
 func screen_wrap() -> void:

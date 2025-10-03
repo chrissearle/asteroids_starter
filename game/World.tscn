@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://qm4rcjuxmhqk"]
 
-[ext_resource type="Script" path="res://World.gd" id="1_bxt38"]
+[ext_resource type="Script" uid="uid://caqti5fh6sqaa" path="res://World.gd" id="1_bxt38"]
 [ext_resource type="PackedScene" uid="uid://d0cbutytp0vmt" path="res://Player/Player.tscn" id="2_cf0ag"]
 [ext_resource type="PackedScene" uid="uid://dlhxsvg2rp3gm" path="res://TimeDisplay.tscn" id="6_oyy7q"]
 [ext_resource type="FontFile" uid="uid://bjqu0fkqtf5yh" path="res://Assets/NeueMachina-Black.otf" id="7_7aavy"]

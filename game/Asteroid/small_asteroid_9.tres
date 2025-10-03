@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AsteroidResource" load_steps=4 format=3 uid="uid://d126lf55fjau4"]
+
+[ext_resource type="Script" uid="uid://bev1fgrqp3g50" path="res://Asteroid/AsteroidResource.gd" id="1_tw47o"]
+[ext_resource type="Texture2D" uid="uid://bsxkak3tjd4dd" path="res://Assets/monogram-fuchsia.png" id="2_8yoyt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tw47o"]
+size = Vector2(26, 26)
+
+[resource]
+script = ExtResource("1_tw47o")
+tex = ExtResource("2_8yoyt")
+scale = 0.055
+collision_shape = SubResource("RectangleShape2D_tw47o")
+metadata/_custom_type_script = "uid://bev1fgrqp3g50"

@@ -1,44 +1,43 @@
 extends Node2D
 
-const asteroids = [
-	preload("res://Asteroid/Asteroid.tscn"),
-	preload("res://Asteroid/Asteroid2.tscn"),
-	preload("res://Asteroid/Asteroid3.tscn"),
-	preload("res://Asteroid/Asteroid4.tscn"),
-	preload("res://Asteroid/Asteroid5.tscn"),
-	preload("res://Asteroid/Asteroid6.tscn"),
-	preload("res://Asteroid/Asteroid7.tscn"),
-	preload("res://Asteroid/Asteroid8.tscn"),
-	preload("res://Asteroid/Asteroid9.tscn"),
-	preload("res://Asteroid/Asteroid10.tscn")
+var asteroids: Array[AsteroidResource] = [
+	preload("res://Asteroid/large_asteroid_1.tres"),
+	preload("res://Asteroid/large_asteroid_2.tres"),
+	preload("res://Asteroid/large_asteroid_3.tres"),
+	preload("res://Asteroid/large_asteroid_4.tres"),
+	preload("res://Asteroid/large_asteroid_5.tres"),
+	preload("res://Asteroid/large_asteroid_6.tres"),
+	preload("res://Asteroid/large_asteroid_7.tres"),
+	preload("res://Asteroid/large_asteroid_8.tres"),
+	preload("res://Asteroid/large_asteroid_9.tres"),
+	preload("res://Asteroid/large_asteroid_10.tres"),
+	preload("res://Asteroid/small_asteroid_1.tres"),
+	preload("res://Asteroid/small_asteroid_2.tres"),
+	preload("res://Asteroid/small_asteroid_3.tres"),
+	preload("res://Asteroid/small_asteroid_4.tres"),
+	preload("res://Asteroid/small_asteroid_5.tres"),
+	preload("res://Asteroid/small_asteroid_6.tres"),
+	preload("res://Asteroid/small_asteroid_7.tres"),
+	preload("res://Asteroid/small_asteroid_8.tres"),
+	preload("res://Asteroid/small_asteroid_9.tres"),
+	preload("res://Asteroid/small_asteroid_10.tres")
 ]
 
-const smallAsteroids = [
-	preload("res://Asteroid/SmallAsteroid.tscn"),
-	preload("res://Asteroid/SmallAsteroid2.tscn"),
-	preload("res://Asteroid/SmallAsteroid3.tscn"),
-	preload("res://Asteroid/SmallAsteroid4.tscn"),
-	preload("res://Asteroid/SmallAsteroid5.tscn"),
-	preload("res://Asteroid/SmallAsteroid6.tscn"),
-	preload("res://Asteroid/SmallAsteroid7.tscn"),
-	preload("res://Asteroid/SmallAsteroid8.tscn"),
-	preload("res://Asteroid/SmallAsteroid9.tscn"),
-	preload("res://Asteroid/SmallAsteroid10.tscn")
-]
+var asteroid_scene := preload("res://Asteroid/Asteroid.tscn")
 
-@export var start_count = 7
+@export var start_count := 7
 
 @onready var screen_size: Vector2i = get_viewport().size
 
-@onready var player: = $Player
-@onready var time_display: = $TimeDisplay
-@onready var restart_label: = $RestartLabel
-@onready var final_time_label: = $FinalTime
+@onready var player := $Player
+@onready var time_display := $TimeDisplay
+@onready var restart_label := $RestartLabel
+@onready var final_time_label := $FinalTime
 
-var asteroid_count: = 0
-var break_count: = 3
+var asteroid_count := 0
+var break_count := 3
 
-var alive: = true
+var alive := true
 
 func _ready() -> void:
 	restart_label.visible = false
@@ -81,20 +80,19 @@ func hit(area: Asteroid):
 	if asteroid_count <= 0:
 		player.queue_free()
 
-func build_asteroid(large: bool, fixed_position = Vector2.ZERO ) -> void:
-	var asteroid_instance: Node
-
-	if large:
-		asteroid_instance = asteroids.pick_random().instantiate()
-	else:
-		asteroid_instance = smallAsteroids.pick_random().instantiate()
+func build_asteroid(large: bool, fixed_position: Vector2 = Vector2.ZERO ) -> void:
+	var asteroid_resource : AsteroidResource = asteroids.filter(func(res: AsteroidResource) -> bool: return res.large == large).pick_random()
+	
+	var asteroid_instance : Asteroid = asteroid_scene.instantiate()
 
 	asteroid_count += 1
 	
 	add_child(asteroid_instance)
 	
-	var pos = fixed_position
-	
+	asteroid_instance.init(asteroid_resource)
+
+	var pos := fixed_position
+
 	if pos == Vector2.ZERO:
 		pos = Vector2(screen_size.x * randf(), screen_size.y * randf())
 	

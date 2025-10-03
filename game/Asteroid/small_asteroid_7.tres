@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AsteroidResource" load_steps=4 format=3 uid="uid://b745wmd0s8r63"]
+
+[ext_resource type="Script" uid="uid://bev1fgrqp3g50" path="res://Asteroid/AsteroidResource.gd" id="1_w0x0n"]
+[ext_resource type="Texture2D" uid="uid://dnejcqvul21fb" path="res://Assets/monogram-jade.png" id="2_qny6i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w0x0n"]
+size = Vector2(26, 26)
+
+[resource]
+script = ExtResource("1_w0x0n")
+tex = ExtResource("2_qny6i")
+scale = 0.055
+collision_shape = SubResource("RectangleShape2D_w0x0n")
+metadata/_custom_type_script = "uid://bev1fgrqp3g50"

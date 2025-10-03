@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AsteroidResource" load_steps=4 format=3 uid="uid://d14eeqttmx31p"]
+
+[ext_resource type="Script" uid="uid://bev1fgrqp3g50" path="res://Asteroid/AsteroidResource.gd" id="1_qdem8"]
+[ext_resource type="Texture2D" uid="uid://clig6m5k6t2di" path="res://Assets/monogram-gold.png" id="2_i5lp4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qdem8"]
+size = Vector2(26, 26)
+
+[resource]
+script = ExtResource("1_qdem8")
+tex = ExtResource("2_i5lp4")
+scale = 0.055
+collision_shape = SubResource("RectangleShape2D_qdem8")
+metadata/_custom_type_script = "uid://bev1fgrqp3g50"
