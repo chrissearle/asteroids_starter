@@ -10,13 +10,13 @@ extends Area2D
 const bullet := preload("res://Bullet/Bullet.tscn")
 
 func _process(delta: float) -> void:
-	var rotate_input = Input.get_axis("ui_left", "ui_right")
+	var rotate_input = Input.get_axis("left", "right")
 	
 	rotation += rotation_max * rotate_input * delta
 	
 	rotation = fmod(rotation, TAU)
 
-	var acceleration := Input.get_action_strength("ui_up")
+	var acceleration := Input.get_action_strength("forward")
 	
 	if acceleration > 0:
 		exhaust.emitting = true
@@ -29,7 +29,7 @@ func _process(delta: float) -> void:
 		engineSound.stop()
 		exhaust.emitting = false
 	
-	if Input.is_action_just_pressed("ui_select"):
+	if Input.is_action_just_pressed("fire"):
 		var bullet_instance = bullet.instantiate()
 		bullet_instance.global_position = tip.global_position
 		bullet_instance.set_direction(rotation)
