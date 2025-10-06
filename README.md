@@ -392,8 +392,8 @@ To make the bullet move - add a script so that we can:
 
 Then in process we can make it move and spin:
 
-- count the moved steps
-- if moved too far - remove it
+- count the lifetime in frames
+- if lifetime is over (max frames) - remove it
 - update the position following the set direction
 - rotate it a bit
 
@@ -401,8 +401,8 @@ Then in process we can make it move and spin:
 
 ```
 var direction: = Vector2.ZERO
-var moved: = 0
-@export var max_move: = 240
+var frame_lifetime: = 0
+@export var max_frame_lifetime: = 240
 @export var speed_max: = 210
 
 func set_direction(radians: float) -> void:
@@ -412,7 +412,7 @@ func set_direction(radians: float) -> void:
 func _process(delta: float) -> void:
 	moved += 1
 
-	if moved > max_move:
+	if frame_lifetime > max_frame_lifetime:
 		queue_free()
 
 	position += direction * delta * speed_max

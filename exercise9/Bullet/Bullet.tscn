@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cwnryldlqdpuj"]
 
 [ext_resource type="Texture2D" uid="uid://bsmvfijmxk6y3" path="res://Assets/simpleSpace_tilesheet.png" id="1_0vmse"]
-[ext_resource type="Script" path="res://Bullet/Bullet.gd" id="1_mmh2t"]
+[ext_resource type="Script" uid="uid://dquoa1pcix5o4" path="res://Bullet/Bullet.gd" id="1_mmh2t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_olrf4"]
 radius = 4.12311
