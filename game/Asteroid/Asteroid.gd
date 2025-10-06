@@ -38,8 +38,6 @@ func init(asteroid_resource: AsteroidResource) -> void:
 		sprite.region_enabled = false
 
 func _ready() -> void:
-	randomize()
-
 	rotation = randf() * TAU
 	
 	direction = Vector2(build_random_direction(), build_random_direction())

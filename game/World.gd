@@ -23,6 +23,9 @@ var asteroids: Array[AsteroidResource] = [
 	preload("res://Asteroid/small_asteroid_10.tres")
 ]
 
+var large_asteroids := asteroids.filter(func(res: AsteroidResource) -> bool: return res.large == true)
+var small_asteroids := asteroids.filter(func(res: AsteroidResource) -> bool: return res.large == false)
+
 var asteroid_scene := preload("res://Asteroid/Asteroid.tscn")
 
 @export var start_count := 7
@@ -40,6 +43,8 @@ var break_count := 3
 var alive := true
 
 func _ready() -> void:
+	randomize()
+
 	restart_label.visible = false
 	final_time_label.visible = false
 	
@@ -56,14 +61,15 @@ func _process(delta: float) -> void:
 		final_time_label.visible = true
 		final_time_label.text = "Time %02d:%02d:%02d" % [ScoreTime.minutes(), ScoreTime.seconds(), ScoreTime.milliseconds()]
 
-		if Input.is_action_pressed("ui_accept"):
+		if Input.is_action_just_pressed("ui_accept"):
 			get_tree().reload_current_scene()
 	else:
 		ScoreTime.add(delta)
 
 func kill_player():
-	AudioManager.play("res://Sounds/die.wav")
-	player.queue_free()
+	AudioManager.play("die")
+	if is_instance_valid(player):
+		player.queue_free()
 	alive = false
 
 func hit(area: Asteroid):
@@ -75,15 +81,17 @@ func hit(area: Asteroid):
 
 	if large:
 		for _i in range(break_count):
-			build_asteroid(false, pos)
+			call_deferred("build_asteroid", false, pos)
 	
-	if asteroid_count <= 0:
+	if asteroid_count <= 0 and is_instance_valid(player):
 		player.queue_free()
 
-func build_asteroid(large: bool, fixed_position: Vector2 = Vector2.ZERO ) -> void:
-	var asteroid_resource : AsteroidResource = asteroids.filter(func(res: AsteroidResource) -> bool: return res.large == large).pick_random()
+func build_asteroid(large: bool, fixed_position: Vector2 = Vector2.ZERO) -> void:
+	var asteroid_array := large_asteroids if large else small_asteroids
+
+	var asteroid_resource: AsteroidResource = asteroid_array.pick_random()
 	
-	var asteroid_instance : Asteroid = asteroid_scene.instantiate()
+	var asteroid_instance: Asteroid = asteroid_scene.instantiate()
 
 	asteroid_count += 1
 	

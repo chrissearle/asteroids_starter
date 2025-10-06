@@ -34,10 +34,10 @@ func _process(delta: float) -> void:
 		bullet_instance.global_position = tip.global_position
 		bullet_instance.set_direction(rotation)
 		get_parent().add_child(bullet_instance)
-		AudioManager.play("res://Sounds/shoot.wav")
-		ScoreTime.add(5)
+		AudioManager.play("shoot")
+		ScoreTime.add(-1)
 		bullet_instance.hit.connect(bullet_hit)
 
 func bullet_hit(area: Asteroid) -> void:
-	AudioManager.play("res://Sounds/boom.wav")
+	AudioManager.play("boom")
 	get_parent().hit(area)

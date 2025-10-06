@@ -6,8 +6,15 @@ const bus := "master"
 var players: Array[AudioStreamPlayer] = []
 var queue: Array[String] = []
 
+var effects := {
+	"shoot": preload("res://Sounds/shoot.wav"),
+	"boom": preload("res://Sounds/boom.wav"),
+	"die": preload("res://Sounds/die.wav"),
+	"engine": preload("res://Sounds/engine.wav")
+}
+
 func _ready():
-	for i in num_players:
+	for i in range(num_players):
 		var p := AudioStreamPlayer.new()
 		add_child(p)
 		players.append(p)
@@ -22,6 +29,6 @@ func play(sound_path: String):
 
 func _process(_delta: float):
 	if not queue.is_empty() and not players.is_empty():
-		players[0].stream = load(queue.pop_front())
+		players[0].stream = effects[queue.pop_front()]
 		players[0].play()
 		players.pop_front()
