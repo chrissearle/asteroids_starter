@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AsteroidResource" load_steps=4 format=3 uid="uid://dsn7fdq7wkxnb"]
+
+[ext_resource type="Script" uid="uid://bev1fgrqp3g50" path="res://Asteroid/AsteroidResource.gd" id="1_u3v0i"]
+[ext_resource type="Texture2D" uid="uid://c3mnunvh6p4ge" path="res://Assets/avatar.png" id="2_u3v0i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rrh56"]
+radius = 20.0
+
+[resource]
+script = ExtResource("1_u3v0i")
+large = true
+tex = ExtResource("2_u3v0i")
+scale = 0.08
+collision_shape = SubResource("CircleShape2D_rrh56")
+metadata/_custom_type_script = "uid://bev1fgrqp3g50"
