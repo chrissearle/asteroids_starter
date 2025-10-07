@@ -1,30 +1,40 @@
 extends Node2D
 
 var asteroids: Array[AsteroidResource] = [
-	preload("res://Asteroid/large_asteroid_1.tres"),
-	preload("res://Asteroid/large_asteroid_2.tres"),
-	preload("res://Asteroid/large_asteroid_3.tres"),
-	preload("res://Asteroid/large_asteroid_4.tres"),
-	preload("res://Asteroid/large_asteroid_5.tres"),
-	preload("res://Asteroid/large_asteroid_6.tres"),
-	preload("res://Asteroid/large_asteroid_7.tres"),
-	preload("res://Asteroid/large_asteroid_8.tres"),
-	preload("res://Asteroid/large_asteroid_9.tres"),
-	preload("res://Asteroid/large_asteroid_10.tres"),
-	preload("res://Asteroid/small_asteroid_1.tres"),
-	preload("res://Asteroid/small_asteroid_2.tres"),
-	preload("res://Asteroid/small_asteroid_3.tres"),
-	preload("res://Asteroid/small_asteroid_4.tres"),
-	preload("res://Asteroid/small_asteroid_5.tres"),
-	preload("res://Asteroid/small_asteroid_6.tres"),
-	preload("res://Asteroid/small_asteroid_7.tres"),
-	preload("res://Asteroid/small_asteroid_8.tres"),
-	preload("res://Asteroid/small_asteroid_9.tres"),
-	preload("res://Asteroid/small_asteroid_10.tres")
+	preload("res://Asteroid/Asteroids/large_asteroid_1.tres"),
+	preload("res://Asteroid/Asteroids/large_asteroid_2.tres"),
+	preload("res://Asteroid/Asteroids/large_asteroid_3.tres"),
+	preload("res://Asteroid/Asteroids/large_asteroid_4.tres"),
+	preload("res://Asteroid/Itera/large_asteroid_5.tres"),
+	preload("res://Asteroid/Itera/large_asteroid_6.tres"),
+	preload("res://Asteroid/Itera/large_asteroid_7.tres"),
+	preload("res://Asteroid/Itera/large_asteroid_8.tres"),
+	preload("res://Asteroid/Itera/large_asteroid_9.tres"),
+	preload("res://Asteroid/Itera/large_asteroid_10.tres"),
+	preload("res://Asteroid/Avatar/large_asteroid_avatar.tres"),
+	preload("res://Asteroid/Asteroids/small_asteroid_1.tres"),
+	preload("res://Asteroid/Asteroids/small_asteroid_2.tres"),
+	preload("res://Asteroid/Asteroids/small_asteroid_3.tres"),
+	preload("res://Asteroid/Asteroids/small_asteroid_4.tres"),
+	preload("res://Asteroid/Itera/small_asteroid_5.tres"),
+	preload("res://Asteroid/Itera/small_asteroid_6.tres"),
+	preload("res://Asteroid/Itera/small_asteroid_7.tres"),
+	preload("res://Asteroid/Itera/small_asteroid_8.tres"),
+	preload("res://Asteroid/Itera/small_asteroid_9.tres"),
+	preload("res://Asteroid/Itera/small_asteroid_10.tres"),
+	preload("res://Asteroid/Avatar/small_asteroid_avatar.tres")
 ]
 
-var large_asteroids := asteroids.filter(func(res: AsteroidResource) -> bool: return res.large == true)
-var small_asteroids := asteroids.filter(func(res: AsteroidResource) -> bool: return res.large == false)
+var include_itera := false
+var include_avatar := true
+
+func valid_path(path: String) -> bool:
+	return path.contains("Asteroids") or (include_avatar and path.contains("Avatar")) or (include_itera and path.contains("Itera"))
+
+var valid_asteroids := asteroids.filter(func(res: AsteroidResource) -> bool:	return valid_path(res.resource_path))
+
+var large_asteroids := valid_asteroids.filter(func(res: AsteroidResource) -> bool: return res.large == true)
+var small_asteroids := valid_asteroids.filter(func(res: AsteroidResource) -> bool: return res.large == false)
 
 var asteroid_scene := preload("res://Asteroid/Asteroid.tscn")
 
@@ -61,7 +71,7 @@ func _process(delta: float) -> void:
 		final_time_label.visible = true
 		final_time_label.text = "Time %02d:%02d:%02d" % [ScoreTime.minutes(), ScoreTime.seconds(), ScoreTime.milliseconds()]
 
-		if Input.is_action_just_pressed("ui_accept"):
+		if Input.is_action_just_pressed("start"):
 			get_tree().reload_current_scene()
 	else:
 		ScoreTime.add(delta)

@@ -24,7 +24,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("7_7aavy")
 theme_override_font_sizes/font_size = 60
-text = "Press Space to Restart"
+text = "Press Space/Start to Restart"
 horizontal_alignment = 1
 vertical_alignment = 1
 
