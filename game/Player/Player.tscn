@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://d0cbutytp0vmt"]
 
 [ext_resource type="Texture2D" uid="uid://d0cc1eyfbracw" path="res://Assets/simpleSpace_tilesheet.png" id="1_1cbku"]
-[ext_resource type="Script" path="res://Player/Player.gd" id="1_rel34"]
+[ext_resource type="Script" uid="uid://pu62uue7xkw8" path="res://Player/Player.gd" id="1_rel34"]
 [ext_resource type="AudioStream" uid="uid://dkrqogpat7ia2" path="res://Sounds/engine.wav" id="3_htrw0"]
-[ext_resource type="PackedScene" path="res://ScreenWrap.tscn" id="4_7xc6p"]
+[ext_resource type="PackedScene" uid="uid://dt48ght4d8hnx" path="res://Helpers/ScreenWrap.tscn" id="4_7xc6p"]
 
 [node name="Player" type="Area2D"]
 collision_mask = 0

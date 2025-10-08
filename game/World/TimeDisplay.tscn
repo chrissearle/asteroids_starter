@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dlhxsvg2rp3gm"]
 
-[ext_resource type="Script" path="res://TimeDisplay.gd" id="1_ry3uk"]
+[ext_resource type="Script" uid="uid://cdjarmkp35ux7" path="res://World/TimeDisplay.gd" id="1_ry3uk"]
 [ext_resource type="FontFile" uid="uid://bjqu0fkqtf5yh" path="res://Assets/NeueMachina-Black.otf" id="2_6x5ol"]
 
 [node name="TimeDisplay" type="Node2D"]

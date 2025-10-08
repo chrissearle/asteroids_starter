@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://qm4rcjuxmhqk"]
+[gd_scene load_steps=6 format=3 uid="uid://qm4rcjuxmhqk"]
 
-[ext_resource type="Script" uid="uid://caqti5fh6sqaa" path="res://World.gd" id="1_bxt38"]
+[ext_resource type="Script" uid="uid://caqti5fh6sqaa" path="res://World/World.gd" id="1_bxt38"]
 [ext_resource type="PackedScene" uid="uid://d0cbutytp0vmt" path="res://Player/Player.tscn" id="2_cf0ag"]
-[ext_resource type="PackedScene" uid="uid://dlhxsvg2rp3gm" path="res://TimeDisplay.tscn" id="6_oyy7q"]
+[ext_resource type="PackedScene" uid="uid://bm3uicar7c40l" path="res://Helpers/starfield.tscn" id="5_o14yy"]
+[ext_resource type="PackedScene" uid="uid://dlhxsvg2rp3gm" path="res://World/TimeDisplay.tscn" id="6_oyy7q"]
 [ext_resource type="FontFile" uid="uid://bjqu0fkqtf5yh" path="res://Assets/NeueMachina-Black.otf" id="7_7aavy"]
 
 [node name="World" type="Node2D"]
@@ -37,3 +38,12 @@ theme_override_font_sizes/font_size = 60
 text = "Time: 00:00:00"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Control" type="Control" parent="."]
+z_index = -1
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 3
+anchors_preset = 0
+
+[node name="StarField" parent="Control" instance=ExtResource("5_o14yy")]
+layout_mode = 1

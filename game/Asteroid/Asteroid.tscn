@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dchhspxka731j" path="res://Asteroid/Asteroid.gd" id="1_lh21i"]
 [ext_resource type="Texture2D" uid="uid://d0cc1eyfbracw" path="res://Assets/simpleSpace_tilesheet.png" id="2_lyspt"]
-[ext_resource type="PackedScene" path="res://ScreenWrap.tscn" id="3_knrp6"]
+[ext_resource type="PackedScene" uid="uid://dt48ght4d8hnx" path="res://Helpers/ScreenWrap.tscn" id="3_knrp6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xvv6y"]
 radius = 21.0

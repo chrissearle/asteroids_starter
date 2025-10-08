@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqfuxh4nf4kh7"]
+
+[ext_resource type="Theme" uid="uid://7ejd2qkxig3w" path="res://Theme/asteroids_theme.tres" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://c81lcsatx5utu" path="res://main.gd" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://bm3uicar7c40l" path="res://Helpers/starfield.tscn" id="3_h2yge"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ig7tw")
+script = ExtResource("2_0xm2m")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Asteroids"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Press space/click start button to start"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StarField" parent="." instance=ExtResource("3_h2yge")]
+z_index = -1
+layout_mode = 1

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bm3uicar7c40l"]
+
+[ext_resource type="Shader" uid="uid://bjdtkwto0wkck" path="res://Helpers/starfield.gdshader" id="1_ejn6l"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ejn6l"]
+noise_type = 0
+frequency = 0.3523
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_monej"]
+noise = SubResource("FastNoiseLite_ejn6l")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wau8g"]
+shader = ExtResource("1_ejn6l")
+shader_parameter/resolution = Vector2(1280, 720)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_monej")
+shader_parameter/density = 20.0
+shader_parameter/speed_x = 20.0
+shader_parameter/speed_y = 0.0
+shader_parameter/layers = 5.0
+
+[node name="StarField" type="ColorRect"]
+material = SubResource("ShaderMaterial_wau8g")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
