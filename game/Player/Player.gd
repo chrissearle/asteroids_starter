@@ -2,7 +2,7 @@ extends Area2D
 
 @export var rotation_max := 3
 @export var speed_max := 200
-@export_range(0.0, 1.0, 0.05, "Time cost in seconds for each shot") var penalty := 0.1
+@export_range(0.0, 1.0, 0.05, "Time cost in seconds for each shot") var penalty := 1.5
 
 @onready var tip := $Tip
 @onready var exhaust := $Exhaust
@@ -36,7 +36,7 @@ func _process(delta: float) -> void:
 		bullet_instance.set_direction(rotation)
 		get_parent().add_child(bullet_instance)
 		AudioManager.play("shoot")
-		ScoreTime.add(penalty * -1.0)
+		ScoreTime.add(penalty)
 		bullet_instance.hit.connect(bullet_hit)
 
 func bullet_hit(area: Asteroid) -> void:
